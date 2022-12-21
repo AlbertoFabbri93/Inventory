@@ -15,4 +15,25 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="underlined_sign_up"><u>Sign Up</u></string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="product_category">
+        <item>Chair</item>
+        <item>Table</item>
+        <item>Sofa</item>
+        <item>Desk</item>
+        <item>Bed</item>
+        <item>Lamp</item>
+        <item>Carpet</item>
+        <item>Mirror</item>
+    </string-array>
+    <string-array name="material_category">
+        <item>Fabric</item>
+        <item>Mix</item>
+        <item>Non-Fabric</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
 </resources>
