@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -12,9 +13,9 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.cohabit.inventory.databinding.FragmentFirstBinding;
 
 public class FirstFragment extends Fragment {
-
+    ImageView im;
+    ImageView im2;
     private FragmentFirstBinding binding;
-
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -26,12 +27,17 @@ public class FirstFragment extends Fragment {
 
     }
 
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.logIn.setOnClickListener(new View.OnClickListener() {
+        binding.Itembtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ImageView im = (ImageView) getView().findViewById(R.id.imageView);
+                im.setImageResource(R.drawable.cohabit_bg);
+                ImageView im2 = (ImageView) getView().findViewById(R.id.imageView2);
+                im2.setImageResource(R.drawable.cohbaits_logo);
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
             }

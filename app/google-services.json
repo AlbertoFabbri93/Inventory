@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "247011512346",
+    "project_id": "cohabit-inventory",
+    "storage_bucket": "cohabit-inventory.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:247011512346:android:380995bad5e07ed6e381a3",
+        "android_client_info": {
+          "package_name": "com.cohabit.inventory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "247011512346-qh642kt4h3mvcel2b64g7d60ru12n6tv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlps8nBU_3mIiNVrN3kjKcbYpcCkyCtxs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "247011512346-qh642kt4h3mvcel2b64g7d60ru12n6tv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
