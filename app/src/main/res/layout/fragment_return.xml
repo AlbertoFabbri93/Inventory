@@ -3,12 +3,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Return">
+    android:orientation="vertical"
+    android:padding="5dp">
 
-    <!-- TODO: Update blank fragment layout -->
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#65C1C9"
+        android:padding="10dp"
+        android:text="@string/button_back"
+        android:textColor="#37474F" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="225dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="120dp"
+        android:contentDescription="@string/companyLogo"
+        android:src="@drawable/whatsapp_bild_2022_12_16_kl__11_35_24"
+        tools:ignore="ImageContrastCheck" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="111dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:text="@string/returnText"
+        android:textColor="#66C1CB"
+        android:textColorLink="#66C1CB"
+        android:textSize="60sp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="220dp"
+        android:autofillHints="SK ¤"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/sk_number"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="@string/sk" />
+
+    <Spinner
+        android:id="@+id/spinnerFunctionality"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="270dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#65C0C8"
+        android:contentDescription="@string/company_name"
+        android:minHeight="48dp"
+        android:radius="12dp"
+        android:spinnerMode="dropdown"/>
 
 </FrameLayout>
