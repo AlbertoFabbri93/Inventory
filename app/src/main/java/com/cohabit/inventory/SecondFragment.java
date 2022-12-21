@@ -1,39 +1,81 @@
 package com.cohabit.inventory;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.cohabit.inventory.databinding.FragmentSecondBinding;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
 
+    private EditText email;
+    private EditText password;
+    private Button login;
+
+    private FirebaseAuth auth;
+
     @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentSecondBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+        email = binding.email;
+        password = binding.password;
+        login = binding.buttonSecond;
+
+        auth = FirebaseAuth.getInstance();
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String emailText = email.getText().toString();
+                String passwordText = password.getText().toString();
+                loginUser(emailText, passwordText);
+            }
+        });
+
+        setupHyperlink();
+        View view = binding.getRoot();
+        return view;
 
     }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    private void loginUser(String email, String password) {
 
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
+        auth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+            public void onSuccess(AuthResult authResult) {
+                Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(e -> {
+            Toast.makeText(getActivity(), "Login Failed", Toast.LENGTH_SHORT).show();
+        });
+
+    }
+
+    private void setupHyperlink() {
+        TextView linkTextView = binding.signUpText;
+        linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
+        linkTextView.setLinkTextColor(Color.BLUE);
+        linkTextView.setLinksClickable(true);
+        linkTextView.setClickable(true);
+        linkTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Sign Up", Toast.LENGTH_SHORT).show();
             }
         });
     }
