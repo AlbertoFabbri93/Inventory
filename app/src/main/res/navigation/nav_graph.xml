@@ -24,12 +24,19 @@
         <action
             android:id="@+id/action_Login_to_Signup"
             app:destination="@id/Signup" />
+        <action
+            android:id="@+id/action_Login_to_Home"
+            app:destination="@id/Home" />
     </fragment>
     <fragment
         android:id="@+id/New_Item"
         android:name="com.cohabit.inventory.EditItem"
         android:label="fragment_edit_item"
-        tools:layout="@layout/fragment_edit_item" />
+        tools:layout="@layout/fragment_edit_item" >
+        <action
+            android:id="@+id/action_New_Item_to_Home"
+            app:destination="@id/Home" />
+    </fragment>
     <fragment
         android:id="@+id/Home"
         android:name="com.cohabit.inventory.HomeFragment"

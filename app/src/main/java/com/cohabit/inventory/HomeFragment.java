@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
                 ImageView im2 = (ImageView) getView().findViewById(R.id.imageView2);
                 im2.setImageResource(R.drawable.cohabit_logo);
                 NavHostFragment.findNavController(HomeFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                        .navigate(R.id.action_Home_to_New_Item);
             }
         });
     }

@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.cohabit.inventory.databinding.FragmentLoginBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,6 +29,8 @@ public class LoginFragment extends Fragment {
     private Button login;
 
     private FirebaseAuth auth;
+
+    private NavController navController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,12 +57,19 @@ public class LoginFragment extends Fragment {
 
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
+    }
+
     private void loginUser(String email, String password) {
 
         auth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
                 Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
+                navController.navigate(R.id.action_Login_to_Home);
             }
         }).addOnFailureListener(e -> {
             Toast.makeText(getActivity(), "Login Failed", Toast.LENGTH_SHORT).show();

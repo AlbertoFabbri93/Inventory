@@ -89,7 +89,7 @@ public class NewItemFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(NewItemFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+                        .navigate(R.id.action_New_Item_to_Home);
             }
         });
     }
