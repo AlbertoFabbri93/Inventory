@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.cohabit.inventory.databinding.FragmentFirstBinding;
-
+//ss
 public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
