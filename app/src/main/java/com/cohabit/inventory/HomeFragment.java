@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.cohabit.inventory.databinding.FragmentFirstBinding;
-//s
+
 public class FirstFragment extends Fragment {
     ImageView im;
     ImageView im2;
@@ -21,7 +21,7 @@ public class FirstFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        View view = inflater.inflate(R.layout.fragment_my, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
         ImageView im = (ImageView) view.findViewById(R.id.imageView);
         im.setImageResource(R.drawable.cohabit_bg);
         ImageView im2 = (ImageView) view.findViewById(R.id.imageView2);
