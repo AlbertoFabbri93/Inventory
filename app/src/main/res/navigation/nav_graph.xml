@@ -30,9 +30,8 @@
     </fragment>
     <fragment
         android:id="@+id/New_Item"
-        android:name="com.cohabit.inventory.EditItem"
-        android:label="fragment_edit_item"
-        tools:layout="@layout/fragment_edit_item" >
+        android:name="com.cohabit.inventory.NewItemFragment"
+        android:label="fragment_new_item">
         <action
             android:id="@+id/action_New_Item_to_Home"
             app:destination="@id/Home" />

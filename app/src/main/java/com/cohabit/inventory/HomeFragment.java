@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +20,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = binding.getRoot();
         ImageView im = (ImageView) view.findViewById(R.id.imageView);
         im.setImageResource(R.drawable.cohabit_bg);
         ImageView im2 = (ImageView) view.findViewById(R.id.imageView2);
@@ -31,16 +32,13 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.newItemButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ImageView im = (ImageView) getView().findViewById(R.id.imageView);
-                im.setImageResource(R.drawable.cohabit_bg);
-                ImageView im2 = (ImageView) getView().findViewById(R.id.imageView2);
-                im2.setImageResource(R.drawable.cohabit_logo);
-                NavHostFragment.findNavController(HomeFragment.this)
-                        .navigate(R.id.action_Home_to_New_Item);
-            }
+        binding.newItemButton.setOnClickListener(view1 -> {
+            ImageView im = (ImageView) getView().findViewById(R.id.imageView);
+            im.setImageResource(R.drawable.cohabit_bg);
+            ImageView im2 = (ImageView) getView().findViewById(R.id.imageView2);
+            im2.setImageResource(R.drawable.cohabit_logo);
+            Toast.makeText(getActivity(), "New Item", Toast.LENGTH_SHORT).show();
+            NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_Home_to_New_Item);
         });
     }
 
