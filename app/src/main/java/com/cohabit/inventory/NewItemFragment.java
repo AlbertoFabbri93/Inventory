@@ -13,11 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.cohabit.inventory.databinding.FragmentSecondBinding;
+import com.cohabit.inventory.databinding.FragmentNewItemBinding;
 
-public class SecondFragment extends Fragment {
+public class NewItemFragment extends Fragment {
 
-    private FragmentSecondBinding binding;
+    private FragmentNewItemBinding binding;
     private String[] options = {"Product Category", "Table", "Sofa", "Chair", "Bed"};
     private String[] options1 = {"Material Category", "Wood", "Steel","Plastic"};
     private String[] options2 = {"Functionality", "Needs repair", "Does not need repair"};
@@ -27,13 +27,13 @@ public class SecondFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        binding = FragmentNewItemBinding.inflate(inflater, container, false);
 
         EditText editText = binding.editText;
         EditText editText1 =binding.editText1;
         String userInputString = editText.getText().toString();
         CharSequence userInput = editText.getText();
-        binding.imageView3.setImageResource(R.drawable.cohbaits_logo);
+        binding.imageView3.setImageResource(R.drawable.cohabit_logo);
         Spinner spinner = binding.spinner;
         Spinner spinner1 = binding.spinner1;
         Spinner spinner2 = binding.spinner2;
@@ -88,7 +88,7 @@ public class SecondFragment extends Fragment {
         binding.Secondbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(LoginFragment.this)
+                NavHostFragment.findNavController(NewItemFragment.this)
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);
             }
         });
