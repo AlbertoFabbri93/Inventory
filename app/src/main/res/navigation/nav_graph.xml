@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_signup">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_Signup_to_Login"
             app:destination="@id/Login" />
     </fragment>
     <fragment
@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_login">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_Login_to_Signup"
             app:destination="@id/Signup" />
     </fragment>
     <fragment
@@ -31,22 +31,22 @@
         android:label="fragment_edit_item"
         tools:layout="@layout/fragment_edit_item" />
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/Home"
         android:name="com.cohabit.inventory.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_return1"
-            app:destination="@id/return1" />
+            android:id="@+id/action_Home_to_Return"
+            app:destination="@id/Return" />
         <action
-            android:id="@+id/action_homeFragment_to_Login"
+            android:id="@+id/action_Home_to_Login"
             app:destination="@id/Login" />
         <action
-            android:id="@+id/action_homeFragment_to_New_Item"
+            android:id="@+id/action_Home_to_New_Item"
             app:destination="@id/New_Item" />
     </fragment>
     <fragment
-        android:id="@+id/return1"
+        android:id="@+id/Return"
         android:name="com.cohabit.inventory.Return"
         android:label="fragment_return"
         tools:layout="@layout/fragment_return" />

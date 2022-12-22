@@ -13,8 +13,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.cohabit.inventory.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
-    ImageView im;
-    ImageView im2;
     private FragmentHomeBinding binding;
     @Override
     public View onCreateView(
