@@ -10,12 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.cohabit.inventory.databinding.FragmentFirstBinding;
+import com.cohabit.inventory.databinding.FragmentHomeBinding;
 
-public class FirstFragment extends Fragment {
+public class HomeFragment extends Fragment {
     ImageView im;
     ImageView im2;
-    private FragmentFirstBinding binding;
+    private FragmentHomeBinding binding;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -25,9 +25,8 @@ public class FirstFragment extends Fragment {
         ImageView im = (ImageView) view.findViewById(R.id.imageView);
         im.setImageResource(R.drawable.cohabit_bg);
         ImageView im2 = (ImageView) view.findViewById(R.id.imageView2);
-        im2.setImageResource(R.drawable.cohbaits_logo);
+        im2.setImageResource(R.drawable.cohabit_logo);
         return view;
-
     }
 
 
@@ -40,8 +39,8 @@ public class FirstFragment extends Fragment {
                 ImageView im = (ImageView) getView().findViewById(R.id.imageView);
                 im.setImageResource(R.drawable.cohabit_bg);
                 ImageView im2 = (ImageView) getView().findViewById(R.id.imageView2);
-                im2.setImageResource(R.drawable.cohbaits_logo);
-                NavHostFragment.findNavController(FirstFragment.this)
+                im2.setImageResource(R.drawable.cohabit_logo);
+                NavHostFragment.findNavController(HomeFragment.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
             }
         });
