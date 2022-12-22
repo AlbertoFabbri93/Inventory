@@ -1,6 +1,5 @@
 package com.cohabit.inventory;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -90,7 +88,7 @@ public class SecondFragment extends Fragment {
         binding.Secondbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
+                NavHostFragment.findNavController(LoginFragment.this)
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);
             }
         });

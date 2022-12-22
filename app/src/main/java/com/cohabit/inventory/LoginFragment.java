@@ -13,14 +13,14 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.cohabit.inventory.databinding.FragmentSecondBinding;
+import com.cohabit.inventory.databinding.FragmentLoginBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SecondFragment extends Fragment {
+public class LoginFragment extends Fragment {
 
-    private FragmentSecondBinding binding;
+    private FragmentLoginBinding binding;
 
     private EditText email;
     private EditText password;
@@ -31,7 +31,7 @@ public class SecondFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        binding = FragmentLoginBinding.inflate(inflater, container, false);
         email = binding.email;
         password = binding.password;
         login = binding.buttonSecond;
