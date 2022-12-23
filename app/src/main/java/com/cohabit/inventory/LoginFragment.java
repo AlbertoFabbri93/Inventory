@@ -12,15 +12,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
-import com.cohabit.inventory.databinding.FragmentSecondBinding;
+import com.cohabit.inventory.databinding.FragmentLoginBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SecondFragment extends Fragment {
+public class LoginFragment extends Fragment {
 
-    private FragmentSecondBinding binding;
+    private FragmentLoginBinding binding;
 
     private EditText email;
     private EditText password;
@@ -28,23 +30,22 @@ public class SecondFragment extends Fragment {
 
     private FirebaseAuth auth;
 
+    private NavController navController;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        binding = FragmentLoginBinding.inflate(inflater, container, false);
         email = binding.email;
         password = binding.password;
         login = binding.buttonSecond;
 
         auth = FirebaseAuth.getInstance();
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String emailText = email.getText().toString();
-                String passwordText = password.getText().toString();
-                loginUser(emailText, passwordText);
-            }
+        login.setOnClickListener(v -> {
+            String emailText = email.getText().toString();
+            String passwordText = password.getText().toString();
+            loginUser(emailText, passwordText);
         });
 
         setupHyperlink();
@@ -53,12 +54,19 @@ public class SecondFragment extends Fragment {
 
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
+    }
+
     private void loginUser(String email, String password) {
 
         auth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
                 Toast.makeText(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
+                navController.navigate(R.id.action_Login_to_Home);
             }
         }).addOnFailureListener(e -> {
             Toast.makeText(getActivity(), "Login Failed", Toast.LENGTH_SHORT).show();

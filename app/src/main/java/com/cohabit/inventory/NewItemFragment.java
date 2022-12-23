@@ -1,64 +1,104 @@
 package com.cohabit.inventory;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NewItemFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+
+import com.cohabit.inventory.databinding.FragmentNewItemBinding;
+
 public class NewItemFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private FragmentNewItemBinding binding;
+    private String[] options = {"Product Category", "Table", "Sofa", "Chair", "Bed"};
+    private String[] options1 = {"Material Category", "Wood", "Steel","Plastic"};
+    private String[] options2 = {"Functionality", "Needs repair", "Does not need repair"};
+    private String[] options3 = {"Aesthetics", "Damaged", "Brand New"};
+    @Override
+    public View onCreateView(
+            LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+        binding = FragmentNewItemBinding.inflate(inflater, container, false);
 
-    public NewItemFragment() {
-        // Required empty public constructor
+        EditText editText = binding.editText;
+        EditText editText1 =binding.editText1;
+        String userInputString = editText.getText().toString();
+        CharSequence userInput = editText.getText();
+        binding.imageView3.setImageResource(R.drawable.cohabit_logo);
+        Spinner spinner = binding.spinner;
+        Spinner spinner1 = binding.spinner1;
+        Spinner spinner2 = binding.spinner2;
+        Spinner spinner3 = binding.spinner3;
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_spinner_item, options);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_spinner_item, options1);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_spinner_item, options2);
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_spinner_item, options3);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner1.setAdapter(adapter1);
+        spinner2.setAdapter(adapter2);
+        spinner3.setAdapter(adapter3);
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedOption = options1[position];
+                if (position == 1) {
+                    //do something
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedOption = options[position];
+                if (position == 1) {
+                    //do something
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+        return binding.getRoot();
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NewItemFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NewItemFragment newInstance(String param1, String param2) {
-        NewItemFragment fragment = new NewItemFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.Secondbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(NewItemFragment.this)
+                        .navigate(R.id.action_New_Item_to_Home);
+            }
+        });
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_item, container, false);
+
     }
 }
