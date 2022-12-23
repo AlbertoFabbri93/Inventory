@@ -1,5 +1,7 @@
 package com.cohabit.inventory;
 
+import static androidx.navigation.Navigation.findNavController;
+
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -85,6 +87,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = findNavController(this, R.id.fragmentContainerView);
+        return navController.navigateUp() || super.onSupportNavigateUp();
     }
 }
 
