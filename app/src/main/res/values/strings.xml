@@ -42,10 +42,26 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
-    <string-array name="functionalities">
+    <string-array name="functionalities_array">
         <item>Repair</item>
         <item>Cleaning</item>
         <item>Repair and Cleaning</item>
         <item>Painting</item>
+        <item>Dose not need repair</item>
+        <item>Dose not need painting</item>
+        <item>Dose not need Cleaning</item>
+    </string-array>
+    // placeholder aesthetic.
+    <string-array name="aesthetics_array">
+        <item>Damaged</item>
+        <item>Brand new</item>
+        <item>Need to be checked more</item>
+    </string-array>
+    // placeholder locations.
+    <string-array name="location_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Earth</item>
     </string-array>
 </resources>
