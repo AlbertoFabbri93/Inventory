@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/Signup"
         android:name="com.cohabit.inventory.HomeFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/sign_up"
         tools:layout="@layout/fragment_signup">
 
         <action
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/Login"
         android:name="com.cohabit.inventory.LoginFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/log_in"
         tools:layout="@layout/fragment_login">
 
         <action
@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/New_Item"
         android:name="com.cohabit.inventory.NewItemFragment"
-        android:label="fragment_new_item">
+        android:label="@string/new_item">
         <action
             android:id="@+id/action_New_Item_to_Home"
             app:destination="@id/Home" />
@@ -38,7 +38,7 @@
     <fragment
         android:id="@+id/Home"
         android:name="com.cohabit.inventory.HomeFragment"
-        android:label="fragment_home"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_Home_to_Return"
@@ -53,6 +53,6 @@
     <fragment
         android:id="@+id/Return"
         android:name="com.cohabit.inventory.Return"
-        android:label="fragment_return"
+        android:label="@string/return_item"
         tools:layout="@layout/fragment_return" />
 </navigation>
