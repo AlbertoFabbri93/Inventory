@@ -15,7 +15,9 @@
         android:backgroundTint="#65C1C9"
         android:padding="10dp"
         android:text="@string/button_back"
-        android:textColor="#37474F" />
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        tools:ignore="TextContrastCheck" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -36,10 +38,11 @@
         android:text="@string/returnText"
         android:textColor="#66C1CB"
         android:textColorLink="#66C1CB"
-        android:textSize="60sp" />
+        android:textSize="60sp"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/SKNumber_PlainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -48,21 +51,63 @@
         android:ems="10"
         android:gravity="center"
         android:hint="@string/sk_number"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:minHeight="48dp"
-        android:text="@string/sk" />
+        android:text="@string/sk"
+        android:textColor="#65BFC7" />
 
     <Spinner
         android:id="@+id/spinnerFunctionality"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="290dp"
         android:background="@drawable/roundstyle"
         android:backgroundTint="#65C0C8"
         android:contentDescription="@string/company_name"
         android:minHeight="48dp"
         android:radius="12dp"
-        android:spinnerMode="dropdown"/>
+        android:spinnerMode="dropdown"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <Spinner
+        android:id="@+id/spinnerAesthetics"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="370dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#65C0C8"
+        android:contentDescription="@string/company_name"
+        android:minHeight="48dp"
+        android:radius="12dp"
+        android:spinnerMode="dropdown" />
+
+    <Spinner
+        android:id="@+id/spinnerLocation"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="450dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#65C0C8"
+        android:contentDescription="@string/company_name"
+        android:minHeight="48dp"
+        android:radius="12dp"
+        android:spinnerMode="dropdown" />
+
+    <Button
+        android:id="@+id/buttonSubmit"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="600dp"
+        android:backgroundTint="#65C1C9"
+        android:padding="10dp"
+        android:text="@string/submit"
+        android:textColor="#FFFFFF"
+        android:textStyle="normal"
+        tools:ignore="TextContrastCheck" />
+
 
 </FrameLayout>

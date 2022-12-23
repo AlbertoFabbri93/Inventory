@@ -21,6 +21,7 @@
     <string name="returnText">Return</string>
     <string name="companyLogo">CompanyLogo</string>
     <string name="sk_number">SK number</string>
+    <string name="submit">Submit</string>
     <string-array name="product_category">
         <item>Chair</item>
         <item>Table</item>
