@@ -25,7 +25,7 @@
         android:layout_height="75dp"
         android:layout_marginStart="120dp"
         android:contentDescription="@string/companyLogo"
-        android:src="@drawable/whatsapp_bild_2022_12_16_kl__11_35_24"
+        android:src="@drawable/cohabit_logo"
         tools:ignore="ImageContrastCheck" />
 
     <TextView
