@@ -42,13 +42,10 @@ public class LoginFragment extends Fragment {
 
         auth = FirebaseAuth.getInstance();
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String emailText = email.getText().toString();
-                String passwordText = password.getText().toString();
-                loginUser(emailText, passwordText);
-            }
+        login.setOnClickListener(v -> {
+            String emailText = email.getText().toString();
+            String passwordText = password.getText().toString();
+            loginUser(emailText, passwordText);
         });
 
         setupHyperlink();
