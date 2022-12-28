@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements MenuProvider {
         }
         navController.setGraph(graph);
 
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        appBarConfiguration = new AppBarConfiguration.Builder(R.id.Login, R.id.Home).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
     }
 
