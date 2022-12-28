@@ -51,7 +51,33 @@ public class Return extends Fragment {
         spinnerFunctionality.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String itemSelected = functionalities[position];
+                int itemSelected = Integer.parseInt(functionalities[position]);
+
+                switch(itemSelected) {
+                    case 1:
+                        // code block, do something
+                        break;
+                    case 2:
+                        // code block, do something
+                        break;
+                    case 3:
+                        // code block, do something
+                        break;
+                    case 4:
+                        // code block, do something
+                        break;
+                    case 5:
+                        // code block, do something
+                        break;
+                    case 6:
+                        // code block, do something
+                        break;
+                    case 7:
+                        // code block, do something
+                        break;
+                    default:
+                        // code block
+                }
 
             }
 
