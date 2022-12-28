@@ -11,12 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-
-import com.cohabit.inventory.databinding.FragmentNewItemBinding;
+import com.cohabit.inventory.databinding.FragmentReturnBinding;
 
 public class Return extends Fragment {
 
-    private FragmentNewItemBinding binding;
+    private FragmentReturnBinding binding;
 
     // Get string Array from strings.xml
     String [] functionalities = getResources().getStringArray(R.array.functionalities_array);
@@ -26,7 +25,7 @@ public class Return extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentNewItemBinding.inflate(inflater, container, false);
+        binding = FragmentReturnBinding.inflate(inflater, container, false);
 
         // Binding spinner.
         Spinner spinnerFunctionality = binding.spinnerFunctionality;
