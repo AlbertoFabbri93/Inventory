@@ -51,7 +51,6 @@
         <item>Dose not need painting</item>
         <item>Dose not need Cleaning</item>
     </string-array>
-    // placeholder aesthetic.
     <string-array name="aesthetics_array">
         <item>Damaged</item>
         <item>Brand new</item>
