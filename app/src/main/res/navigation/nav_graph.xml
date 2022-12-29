@@ -54,5 +54,9 @@
         android:id="@+id/Return"
         android:name="com.cohabit.inventory.Return"
         android:label="fragment_return"
-        tools:layout="@layout/fragment_return" />
+        tools:layout="@layout/fragment_return" >
+        <action
+            android:id="@+id/action_Return_to_Home"
+            app:destination="@id/Home" />
+    </fragment>
 </navigation>

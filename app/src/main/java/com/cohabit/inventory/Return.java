@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -27,11 +28,13 @@ public class Return extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Binding spinners.
+        // Binding spinners and editText.
         binding = FragmentReturnBinding.inflate(inflater, container, false);
         Spinner spinnerFunctionality = binding.spinnerFunctionality;
         Spinner spinnerAesthetics = binding.spinnerAesthetics;
         Spinner spinnerLocation = binding.spinnerLocation;
+
+        EditText editText = binding.SKNumberEditText;
 
         // Adding Array to spinners.
         ArrayAdapter<String> adapterFunctionality = new ArrayAdapter<>(getActivity(),
@@ -93,8 +96,13 @@ public class Return extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSubmit.setOnClickListener(view1 -> NavHostFragment.findNavController(Return.this)
-                .navigate(R.id.action_New_Item_to_Home));
+        binding.buttonSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(Return.this)
+                        .navigate(R.id.action_Return_to_Home);
+            }
+        });
     }
     @Override
     public void onDestroyView() {
