@@ -54,36 +54,39 @@ public class Return extends Fragment {
         spinnerFunctionality.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int itemSelected = Integer.parseInt(functionalities[position]);
-
-                switch(itemSelected) {
-                    case 1:
-                        // code block, do something
-                        break;
-                    case 2:
-                        // code block, do something
-                        break;
-                    case 3:
-                        // code block, do something
-                        break;
-                    case 4:
-                        // code block, do something
-                        break;
-                    case 5:
-                        // code block, do something
-                        break;
-                    case 6:
-                        // code block, do something
-                        break;
-                    case 7:
-                        // code block, do something
-                        break;
-                    default:
-                        // code block
+                String ItemSelected = functionalities[position];
+                if (position == 1) {
+                    //do something
                 }
-
             }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+        spinnerAesthetics.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String ItemSelected = aesthetics[position];
+                if (position == 1) {
+                    //do something
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+
+        });
+        spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String ItemSelected = location[position];
+                if (position == 1) {
+                    //do something
+                }
+            }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // Do nothing
