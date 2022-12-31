@@ -19,14 +19,14 @@ public class Return extends Fragment {
 
     private FragmentReturnBinding binding;
 
-    // Get string Array from strings.xml
-    String [] functionalities = getResources().getStringArray(R.array.functionalities_array);
-    String [] aesthetics = getResources().getStringArray(R.array.aesthetics_array);
-    String [] location = getResources().getStringArray(R.array.location_array);
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        // Get string Array from strings.xml
+        String [] functionalities = getContext().getResources().getStringArray(R.array.functionalities_array);
+        String [] aesthetics = getContext().getResources().getStringArray(R.array.aesthetics_array);
+        String [] location = getContext().getResources().getStringArray(R.array.location_array);
 
         // Binding spinners and editText.
         binding = FragmentReturnBinding.inflate(inflater, container, false);
