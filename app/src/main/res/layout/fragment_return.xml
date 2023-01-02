@@ -108,6 +108,4 @@
         android:textColor="#FFFFFF"
         android:textStyle="normal"
         tools:ignore="TextContrastCheck" />
-
-
 </FrameLayout>
