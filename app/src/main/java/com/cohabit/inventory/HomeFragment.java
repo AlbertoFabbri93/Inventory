@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -40,6 +39,11 @@ public class HomeFragment extends Fragment {
             Toast.makeText(getActivity(), "New Item", Toast.LENGTH_SHORT).show();
             NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_Home_to_New_Item);
         });
+
+       binding.Returnbtn.setOnClickListener(viewReturn -> {
+           Toast.makeText(getActivity(), "Return Item", Toast.LENGTH_SHORT).show();
+           NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_Home_to_Return);
+       });
     }
 
     @Override
@@ -47,5 +51,4 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
 }

@@ -14,6 +14,15 @@
     <string name="company_name">Cohabit</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+
+    <string name="underlined_sign_up"><u>Sign Up</u></string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sk">SK #</string>
+    <string name="button_back">Back</string>
+    <string name="returnText">Return</string>
+    <string name="companyLogo">CompanyLogo</string>
+    <string name="sk_number">SK number</string>
+    <string name="submit">Submit</string>
     <string-array name="product_category">
         <item>Chair</item>
         <item>Table</item>
@@ -33,5 +42,26 @@
         <item>Saturn</item>
         <item>Uranus</item>
         <item>Neptune</item>
+    </string-array>
+    <string-array name="functionalities_array">
+        <item>Repair</item>
+        <item>Cleaning</item>
+        <item>Repair and Cleaning</item>
+        <item>Painting</item>
+        <item>Dose not need repair</item>
+        <item>Dose not need painting</item>
+        <item>Dose not need Cleaning</item>
+    </string-array>
+    <string-array name="aesthetics_array">
+        <item>Damaged</item>
+        <item>Brand new</item>
+        <item>Need to be checked more</item>
+    </string-array>
+    // placeholder locations.
+    <string-array name="location_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Earth</item>
     </string-array>
 </resources>

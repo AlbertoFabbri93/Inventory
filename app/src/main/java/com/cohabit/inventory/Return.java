@@ -1,64 +1,115 @@
 package com.cohabit.inventory;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Return#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+
+import com.cohabit.inventory.databinding.FragmentReturnBinding;
+
 public class Return extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Return() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Return.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Return newInstance(String param1, String param2) {
-        Return fragment = new Return();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private FragmentReturnBinding binding;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_return, container, false);
+
+        // Get string Array from strings.xml
+        String [] functionalities = getContext().getResources().getStringArray(R.array.functionalities_array);
+        String [] aesthetics = getContext().getResources().getStringArray(R.array.aesthetics_array);
+        String [] location = getContext().getResources().getStringArray(R.array.location_array);
+
+        // Binding spinners and editText.
+        binding = FragmentReturnBinding.inflate(inflater, container, false);
+        Spinner spinnerFunctionality = binding.spinnerFunctionality;
+        Spinner spinnerAesthetics = binding.spinnerAesthetics;
+        Spinner spinnerLocation = binding.spinnerLocation;
+
+        EditText editText = binding.SKNumberEditText;
+
+        // Adding Array to spinners.
+        ArrayAdapter<String> adapterFunctionality = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_spinner_item, functionalities);
+        ArrayAdapter<String> adapterAesthetics = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_spinner_item, aesthetics);
+        ArrayAdapter<String> adapterLocation = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_spinner_item, location);
+
+        // setting adapter for spinners.
+        adapterFunctionality.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerFunctionality.setAdapter(adapterFunctionality);
+        spinnerAesthetics.setAdapter(adapterAesthetics);
+        spinnerLocation.setAdapter(adapterLocation);
+
+        // saves item
+        spinnerFunctionality.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String ItemSelected = functionalities[position];
+                if (position == 1) {
+                    //do something
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+        spinnerAesthetics.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String ItemSelected = aesthetics[position];
+                if (position == 1) {
+                    //do something
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+
+        });
+        spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String ItemSelected = location[position];
+                if (position == 1) {
+                    //do something
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+
+
+        return binding.getRoot();
+    }
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.buttonSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(Return.this)
+                        .navigate(R.id.action_Return_to_Home);
+            }
+        });
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
