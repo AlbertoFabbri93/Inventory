@@ -14,8 +14,8 @@
     <string name="company_name">Cohabit</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="save">Save</string>
 
-    <string name="underlined_sign_up"><u>Sign Up</u></string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sk">SK #</string>
     <string name="button_back">Back</string>

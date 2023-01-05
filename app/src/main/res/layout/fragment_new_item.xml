@@ -31,11 +31,11 @@
         app:layout_constraintVertical_bias="0.499" />
 
     <Button
-        android:id="@+id/Secondbutton"
+        android:id="@+id/Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#64c2ca"
-        android:text="go back"
+        android:text="@string/save"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +80,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/edit_text"
+        android:id="@+id/color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#64c2ca"
