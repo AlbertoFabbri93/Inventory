@@ -1,6 +1,9 @@
 package com.cohabit.inventory;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +23,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        ImageView im = (ImageView) view.findViewById(R.id.imageView);
-        im.setImageResource(R.drawable.cohabit_bg);
-        ImageView im2 = (ImageView) view.findViewById(R.id.imageView2);
-        im2.setImageResource(R.drawable.cohabit_logo);
         return view;
     }
 
@@ -32,16 +31,12 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.newItemButton.setOnClickListener(view1 -> {
-            ImageView im = (ImageView) getView().findViewById(R.id.imageView);
-            im.setImageResource(R.drawable.cohabit_bg);
-            ImageView im2 = (ImageView) getView().findViewById(R.id.imageView2);
-            im2.setImageResource(R.drawable.cohabit_logo);
-            Toast.makeText(getActivity(), "New Item", Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "New Item Button Clicked");
             NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_Home_to_New_Item);
         });
 
        binding.Returnbtn.setOnClickListener(viewReturn -> {
-           Toast.makeText(getActivity(), "Return Item", Toast.LENGTH_SHORT).show();
+           Log.i(TAG, "Return Item Button Clicked");
            NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_Home_to_Return);
        });
     }
