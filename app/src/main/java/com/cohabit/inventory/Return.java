@@ -24,7 +24,7 @@ public class Return extends Fragment {
                              Bundle savedInstanceState) {
 
         // Get string Array from strings.xml
-        String [] functionalities = getContext().getResources().getStringArray(R.array.functionalities_array);
+        String [] functionalities = getContext().getResources().getStringArray(R.array.functionality_array);
         String [] aesthetics = getContext().getResources().getStringArray(R.array.aesthetics_array);
         String [] location = getContext().getResources().getStringArray(R.array.location_array);
 

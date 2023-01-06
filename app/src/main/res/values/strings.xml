@@ -23,7 +23,9 @@
     <string name="companyLogo">CompanyLogo</string>
     <string name="sk_number">SK number</string>
     <string name="submit">Submit</string>
-    <string-array name="product_category">
+
+    <string name="product_category">Product Category</string>
+    <string-array name="product_category_array">
         <item>Chair</item>
         <item>Table</item>
         <item>Sofa</item>
@@ -33,7 +35,9 @@
         <item>Carpet</item>
         <item>Mirror</item>
     </string-array>
-    <string-array name="material_category">
+
+    <string name="material_category">Material Category</string>
+    <string-array name="material_category_array">
         <item>Fabric</item>
         <item>Mix</item>
         <item>Non-Fabric</item>
@@ -43,7 +47,9 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
-    <string-array name="functionalities_array">
+
+    <string name="functionality">Functionality</string>
+    <string-array name="functionality_array">
         <item>Repair</item>
         <item>Cleaning</item>
         <item>Repair and Cleaning</item>
@@ -52,12 +58,14 @@
         <item>Dose not need painting</item>
         <item>Dose not need Cleaning</item>
     </string-array>
+
+    <string name="aesthetic">Aesthetic</string>
     <string-array name="aesthetics_array">
         <item>Damaged</item>
         <item>Brand new</item>
         <item>Need to be checked more</item>
     </string-array>
-    // placeholder locations.
+
     <string-array name="location_array">
         <item>Mercury</item>
         <item>Venus</item>

@@ -1,6 +1,7 @@
 package com.cohabit.inventory;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,69 +16,57 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.cohabit.inventory.databinding.FragmentNewItemBinding;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 public class NewItemFragment extends Fragment {
 
     private FragmentNewItemBinding binding;
-    private String[] options = {"Product Category", "Table", "Sofa", "Chair", "Bed"};
-    private String[] options1 = {"Material Category", "Wood", "Steel", "Plastic"};
-    private String[] options2 = {"Functionality", "Needs repair", "Does not need repair"};
-    private String[] options3 = {"Aesthetics", "Damaged", "Brand New"};
+    private DatabaseReference itemsDatabase;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        itemsDatabase = FirebaseDatabase.getInstance("https://cohabit-inventory-default-rtdb.europe-west1.firebasedatabase.app").getReference();
+        Query latestItemNumberQuery = itemsDatabase.child("items").orderByChild("id").limitToLast(1);
+
+        latestItemNumberQuery.get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                Log.e("firebase", "Error getting data", task.getException());
+            }
+            else {
+                Log.d("firebase", String.valueOf(task.getResult().getValue()));
+            }
+        });
+
         binding = FragmentNewItemBinding.inflate(inflater, container, false);
+
+        // Get string Array from strings.xml
+        String [] productCategoryArray = getContext().getResources().getStringArray(R.array.product_category_array);
+        String [] materialCategoryArray = getContext().getResources().getStringArray(R.array.material_category_array);
+        String [] functionalityArray = getContext().getResources().getStringArray(R.array.functionality_array);
+        String [] aestheticsArray = getContext().getResources().getStringArray(R.array.aesthetics_array);
 
         EditText editTextColor = binding.color;
         EditText editTextDimension = binding.editText1;
         String userInputString = editTextColor.getText().toString();
         CharSequence userInput = editTextColor.getText();
         binding.imageView3.setImageResource(R.drawable.cohabit_logo);
-        Spinner spinnerProductCategory = binding.spinner;
-        Spinner spinnerMaterialCategory = binding.spinner1;
-        Spinner spinnerFunctionality = binding.spinner2;
-        Spinner spinnerAesthetics = binding.spinner3;
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, options);
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, options1);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, options2);
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, options3);
+        Spinner spinnerProductCategory = binding.spinnerProductCategory;
+        Spinner spinnerMaterialCategory = binding.spinnerMaterialCategory;
+        Spinner spinnerFunctionality = binding.spinnerFunctionality;
+        Spinner spinnerAesthetics = binding.spinnerAesthetic;
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, productCategoryArray);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, materialCategoryArray);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, functionalityArray);
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, aestheticsArray);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerProductCategory.setAdapter(adapter);
         spinnerMaterialCategory.setAdapter(adapter1);
         spinnerFunctionality.setAdapter(adapter2);
         spinnerAesthetics.setAdapter(adapter3);
-
-        spinnerMaterialCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedOption = options1[position];
-                if (position == 1) {
-                    //do something
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
-        spinnerProductCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedOption = options[position];
-                if (position == 1) {
-                    //do something
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
 
         binding.Save.setOnClickListener(view1 -> {
 

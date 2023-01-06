@@ -7,10 +7,43 @@
     tools:context=".LoginFragment" >
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/spinner_product_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#64c2ca"
+        android:background="@color/cohabit_light_blu"
+        android:prompt="@string/product_category"
+        android:entries="@array/product_category_array"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.366" />
+
+    <Spinner
+        android:id="@+id/spinner_material_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cohabit_light_blu"
+        android:prompt="@string/material_category"
+        android:entries="@array/material_category_array"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.429" />
+
+    <Spinner
+        android:id="@+id/spinner_functionality"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cohabit_light_blu"
+        android:prompt="@string/functionality"
+        android:entries="@array/functionality_array"
+        android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -19,10 +52,13 @@
         app:layout_constraintVertical_bias="0.555" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spinner_aesthetic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#64c2ca"
+        android:background="@color/cohabit_light_blu"
+        android:prompt="@string/aesthetic"
+        android:entries="@array/aesthetics_array"
+        android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -34,7 +70,7 @@
         android:id="@+id/Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#64c2ca"
+        android:backgroundTint="@color/cohabit_light_blu"
         android:text="@string/save"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,30 +78,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.912" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:background="#64c2ca"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.366" />
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:background="#64c2ca"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.429" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -82,7 +94,7 @@
         android:id="@+id/color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#64c2ca"
+        android:background="@color/cohabit_light_blu"
         android:hint="Enter color: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +107,7 @@
         android:id="@+id/edit_text1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#64c2ca"
+        android:background="@color/cohabit_light_blu"
         android:hint="Enter Dimensions LxDxH in cm: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
