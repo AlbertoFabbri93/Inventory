@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.cohabit.inventory.databinding.FragmentNewItemBinding;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -33,13 +34,18 @@ public class NewItemFragment extends Fragment {
         Query latestItemNumberQuery = itemsDatabase.child("items").orderByChild("id").limitToLast(1);
 
         latestItemNumberQuery.get().addOnCompleteListener(task -> {
-            if (!task.isSuccessful()) {
-                Log.e("firebase", "Error getting data", task.getException());
+            if (task.isSuccessful()) {
+                Item latestItem = null;
+                Log.d("firebase", "Children count: " + task.getResult().getChildrenCount());
+                for (DataSnapshot ds : task.getResult().getChildren()) {
+                    latestItem = ds.getValue(Item.class);
+                }
+                Log.d("firebase", String.valueOf(latestItem));
+                Log.d("firebase", "ID value: " + latestItem.id);
+                id_last_item = latestItem.id;
             }
             else {
-                Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                Item latestItem = task.getResult().getValue(Item.class);
-                Log.d("firebase", "ID value: " + Integer.toString(latestItem.id));
+                Log.e("firebase", "Error getting data", task.getException());
             }
         });
 
