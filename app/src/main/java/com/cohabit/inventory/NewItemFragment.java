@@ -88,7 +88,7 @@ public class NewItemFragment extends Fragment {
             String aesthetics = spinnerAesthetics.getSelectedItem().toString();
             String color = editTextColor.getText().toString();
             String dimensions = editTextDimension.getText().toString();
-            Item item = new Item(productCategory, materialCategory, functionality, aesthetics, color, dimensions, id_last_item);
+            Item item = new Item(productCategory, materialCategory, functionality, aesthetics, color, dimensions, id_last_item+1);
             itemsDatabase.child("items").push().setValue(item);
             NavHostFragment.findNavController(NewItemFragment.this).navigate(R.id.action_New_Item_to_Home);
         });

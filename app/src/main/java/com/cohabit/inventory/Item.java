@@ -7,6 +7,15 @@ public class Item {
     public String product_category;
     public String material_category;
     public String functionality;
+
+    public void setFunctionality(String functionality) {
+        this.functionality = functionality;
+    }
+
+    public void setAesthetics(String aesthetics) {
+        this.aesthetics = aesthetics;
+    }
+
     public String aesthetics;
     public String color;
     public String dimensions;

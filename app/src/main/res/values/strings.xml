@@ -54,9 +54,9 @@
         <item>Cleaning</item>
         <item>Repair and Cleaning</item>
         <item>Painting</item>
-        <item>Dose not need repair</item>
-        <item>Dose not need painting</item>
-        <item>Dose not need Cleaning</item>
+        <item>Does not need repair</item>
+        <item>Does not need painting</item>
+        <item>Does not need Cleaning</item>
     </string-array>
 
     <string name="aesthetic">Aesthetic</string>
