@@ -10,17 +10,19 @@ public class Item {
     public String aesthetics;
     public String color;
     public String dimensions;
+    public int id;
 
     public Item() {
         // Default constructor required for calls to DataSnapshot.getValue(Item.class)
     }
 
-    public Item(String product_category, String material_category, String functionality, String aesthetics, String color, String dimensions) {
+    public Item(String product_category, String material_category, String functionality, String aesthetics, String color, String dimensions, int id) {
         this.product_category = product_category;
         this.material_category = material_category;
         this.functionality = functionality;
         this.aesthetics = aesthetics;
         this.color = color;
         this.dimensions = dimensions;
+        this.id = id;
     }
 }

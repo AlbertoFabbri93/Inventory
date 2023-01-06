@@ -24,6 +24,7 @@ public class NewItemFragment extends Fragment {
 
     private FragmentNewItemBinding binding;
     private DatabaseReference itemsDatabase;
+    private int id_last_item = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +38,8 @@ public class NewItemFragment extends Fragment {
             }
             else {
                 Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                Item latestItem = task.getResult().getValue(Item.class);
+                Log.d("firebase", "ID value: " + Integer.toString(latestItem.id));
             }
         });
 
@@ -50,9 +53,6 @@ public class NewItemFragment extends Fragment {
 
         EditText editTextColor = binding.color;
         EditText editTextDimension = binding.editText1;
-        String userInputString = editTextColor.getText().toString();
-        CharSequence userInput = editTextColor.getText();
-        binding.imageView3.setImageResource(R.drawable.cohabit_logo);
         Spinner spinnerProductCategory = binding.spinnerProductCategory;
         Spinner spinnerMaterialCategory = binding.spinnerMaterialCategory;
         Spinner spinnerFunctionality = binding.spinnerFunctionality;
@@ -77,25 +77,17 @@ public class NewItemFragment extends Fragment {
             String aesthetics = spinnerAesthetics.getSelectedItem().toString();
             String color = editTextColor.getText().toString();
             String dimensions = editTextDimension.getText().toString();
-            Item item = new Item(productCategory, materialCategory, functionality, aesthetics, color, dimensions);
-            FirebaseDatabase.getInstance("https://cohabit-inventory-default-rtdb.europe-west1.firebasedatabase.app").getReference().child("items").push().setValue(item);
+            Item item = new Item(productCategory, materialCategory, functionality, aesthetics, color, dimensions, id_last_item);
+            itemsDatabase.child("items").push().setValue(item);
             NavHostFragment.findNavController(NewItemFragment.this).navigate(R.id.action_New_Item_to_Home);
         });
 
         return binding.getRoot();
     }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-
-    }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-
-
     }
 }
