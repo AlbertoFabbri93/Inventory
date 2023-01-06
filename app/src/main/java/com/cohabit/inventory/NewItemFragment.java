@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,8 @@ public class NewItemFragment extends Fragment {
         itemsDatabase = FirebaseDatabase.getInstance("https://cohabit-inventory-default-rtdb.europe-west1.firebasedatabase.app").getReference();
         Query latestItemNumberQuery = itemsDatabase.child("items").orderByChild("id").limitToLast(1);
 
+        binding = FragmentNewItemBinding.inflate(inflater, container, false);
+
         latestItemNumberQuery.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 Item latestItem = null;
@@ -43,13 +46,15 @@ public class NewItemFragment extends Fragment {
                 Log.d("firebase", String.valueOf(latestItem));
                 Log.d("firebase", "ID value: " + latestItem.id);
                 id_last_item = latestItem.id;
+                TextView sknumberTextView = binding.sknumberNITextView;
+                sknumberTextView.append(String.valueOf(id_last_item));
             }
             else {
                 Log.e("firebase", "Error getting data", task.getException());
             }
         });
 
-        binding = FragmentNewItemBinding.inflate(inflater, container, false);
+
 
         // Get string Array from strings.xml
         String [] productCategoryArray = getContext().getResources().getStringArray(R.array.product_category_array);
