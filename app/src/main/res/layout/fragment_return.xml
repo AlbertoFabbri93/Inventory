@@ -53,7 +53,6 @@
         android:hint="@string/sk_number"
         android:inputType="number"
         android:minHeight="48dp"
-        android:text="@string/sk"
         android:textColor="#65BFC7" />
 
     <Spinner

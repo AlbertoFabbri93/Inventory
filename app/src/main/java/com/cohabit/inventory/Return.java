@@ -12,7 +12,6 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
-
 import com.cohabit.inventory.databinding.FragmentReturnBinding;
 
 public class Return extends Fragment {
@@ -77,7 +76,6 @@ public class Return extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
                 // Do nothing
             }
-
         });
         spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -92,7 +90,6 @@ public class Return extends Fragment {
                 // Do nothing
             }
         });
-
 
         return binding.getRoot();
     }
