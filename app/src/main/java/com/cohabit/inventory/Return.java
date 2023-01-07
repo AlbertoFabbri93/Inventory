@@ -8,22 +8,28 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import com.cohabit.inventory.databinding.FragmentReturnBinding;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 public class Return extends Fragment {
 
     private FragmentReturnBinding binding;
+    private DatabaseReference itemsDatabase;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Get string Array from strings.xml
-        String [] functionalities = getContext().getResources().getStringArray(R.array.functionalities_array);
+        String [] functionalities = getContext().getResources().getStringArray(R.array.functionality_array);
         String [] aesthetics = getContext().getResources().getStringArray(R.array.aesthetics_array);
         String [] location = getContext().getResources().getStringArray(R.array.location_array);
 
@@ -49,59 +55,35 @@ public class Return extends Fragment {
         spinnerAesthetics.setAdapter(adapterAesthetics);
         spinnerLocation.setAdapter(adapterLocation);
 
-        // saves item
-        spinnerFunctionality.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String ItemSelected = functionalities[position];
-                if (position == 1) {
-                    //do something
-                }
-            }
+        itemsDatabase = FirebaseDatabase.getInstance("https://cohabit-inventory-default-rtdb.europe-west1.firebasedatabase.app").getReference();
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
-        spinnerAesthetics.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String ItemSelected = aesthetics[position];
-                if (position == 1) {
-                    //do something
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
-        spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String ItemSelected = location[position];
-                if (position == 1) {
-                    //do something
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
-            }
-        });
 
         return binding.getRoot();
     }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(Return.this)
-                        .navigate(R.id.action_Return_to_Home);
-            }
+        binding.buttonSubmit.setOnClickListener(view1 -> {
+
+            int itemDesired = Integer.parseInt(binding.SKNumberEditText.getText().toString());
+            itemsDatabase.child("items").orderByChild("id").equalTo(itemDesired).get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    if (task.getResult().getChildrenCount() == 0) {
+                        Toast.makeText(getContext(), "Item not found", Toast.LENGTH_SHORT).show();
+                    } else {
+                        for (DataSnapshot ds : task.getResult().getChildren()) {
+                            Item itemToUpdate = ds.getValue(Item.class);
+                            itemToUpdate.setFunctionality(binding.spinnerFunctionality.getSelectedItem().toString());
+                            itemToUpdate.setAesthetics(binding.spinnerAesthetics.getSelectedItem().toString());
+                            // itemToUpdate.setLocation(binding.spinnerLocation.getSelectedItem().toString());
+                            itemsDatabase.child("items").child(ds.getKey()).setValue(itemToUpdate);
+                            NavHostFragment.findNavController(Return.this).navigate(R.id.action_Return_to_Home);
+                        }
+
+                        Toast.makeText(getContext(), "Item saved", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         });
     }
     @Override

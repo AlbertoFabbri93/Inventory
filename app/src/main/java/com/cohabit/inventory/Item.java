@@ -1,20 +1,31 @@
 package com.cohabit.inventory;
 
-public class Item {
-    private String name;
-    private String product_category;
-    private String material_category;
-    private String functionality;
-    private String aesthetics;
-    private String color;
-    private String dimensions;
-    private String id;
+import com.google.firebase.database.IgnoreExtraProperties;
 
-    public Item() {
+@IgnoreExtraProperties
+public class Item {
+    public String product_category;
+    public String material_category;
+    public String functionality;
+
+    public void setFunctionality(String functionality) {
+        this.functionality = functionality;
     }
 
-    public Item(String name, String product_category, String material_category, String functionality, String aesthetics, String color, String dimensions, String id) {
-        this.name = name;
+    public void setAesthetics(String aesthetics) {
+        this.aesthetics = aesthetics;
+    }
+
+    public String aesthetics;
+    public String color;
+    public String dimensions;
+    public int id;
+
+    public Item() {
+        // Default constructor required for calls to DataSnapshot.getValue(Item.class)
+    }
+
+    public Item(String product_category, String material_category, String functionality, String aesthetics, String color, String dimensions, int id) {
         this.product_category = product_category;
         this.material_category = material_category;
         this.functionality = functionality;
