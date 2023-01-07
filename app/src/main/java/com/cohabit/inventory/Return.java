@@ -13,7 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
-
 import com.cohabit.inventory.databinding.FragmentReturnBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
@@ -57,6 +56,7 @@ public class Return extends Fragment {
         spinnerLocation.setAdapter(adapterLocation);
 
         itemsDatabase = FirebaseDatabase.getInstance("https://cohabit-inventory-default-rtdb.europe-west1.firebasedatabase.app").getReference();
+
 
         return binding.getRoot();
     }

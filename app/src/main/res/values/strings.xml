@@ -67,9 +67,9 @@
     </string-array>
 
     <string-array name="location_array">
-        <item>Mercury</item>
-        <item>Venus</item>
+        <item>Malmö</item>
+        <item>Lund</item>
         <item>Earth</item>
-        <item>Earth</item>
+        <item>Moon</item>
     </string-array>
 </resources>
