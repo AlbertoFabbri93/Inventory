@@ -1,5 +1,6 @@
 package com.cohabit.inventory;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -68,6 +70,7 @@ public class NewItemFragment extends Fragment {
         Spinner spinnerMaterialCategory = binding.spinnerMaterialCategory;
         Spinner spinnerFunctionality = binding.spinnerFunctionality;
         Spinner spinnerAesthetics = binding.spinnerAesthetic;
+        Button Takepic = binding.Takepic;
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, productCategoryArray);
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, materialCategoryArray);
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, functionalityArray);
@@ -91,6 +94,14 @@ public class NewItemFragment extends Fragment {
             Item item = new Item(productCategory, materialCategory, functionality, aesthetics, color, dimensions, id_last_item+1);
             itemsDatabase.child("items").push().setValue(item);
             NavHostFragment.findNavController(NewItemFragment.this).navigate(R.id.action_New_Item_to_Home);
+        });
+
+        binding.Takepic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), cameraActivity.class);
+                startActivity(intent);
+            }
         });
 
         return binding.getRoot();
