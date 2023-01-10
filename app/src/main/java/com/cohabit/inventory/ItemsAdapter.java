@@ -9,18 +9,29 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+
+public class ItemsAdapter extends FirebaseRecyclerAdapter<Item, ItemsAdapter.ViewHolder> {
+
+    public ItemsAdapter(@NonNull FirebaseRecyclerOptions<Item> options) {
+        super(options);
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textView;
+        private final TextView textViewId;
+        private final TextView textViewCategory;
+        private final TextView textViewMaterial;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.info_SKnumber);
+           textViewId = itemView.findViewById(R.id.info_SKnumber);
+           textViewCategory = itemView.findViewById(R.id.info_category);
+           textViewMaterial = itemView.findViewById(R.id.info_material);
         }
 
         public TextView getView(){
-            return textView;
+            return textViewId;
         }
     }
 
@@ -38,14 +49,11 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Item model) {
         Log.d("ItemsAdapter", "onBindViewHolder: " + position);
-        holder.getView().setText(String.valueOf(12));
-    }
-
-    @Override
-    public int getItemCount() {
-        Log.d("ItemsAdapter", "getItemCount: " + 12);
-        return 100;
+        holder.getView().setText(Integer.toString(model.getId()));
+        Log.d("ItemsAdapter", "Category: " + model.getCategory());
+        holder.textViewCategory.setText(model.getCategory());
+        holder.textViewMaterial.setText(model.getMaterial());
     }
 }

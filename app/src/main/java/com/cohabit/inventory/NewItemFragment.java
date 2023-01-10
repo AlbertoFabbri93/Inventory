@@ -44,8 +44,8 @@ public class NewItemFragment extends Fragment {
                     latestItem = ds.getValue(Item.class);
                 }
                 Log.d("firebase", String.valueOf(latestItem));
-                Log.d("firebase", "ID value: " + latestItem.id);
-                id_last_item = latestItem.id;
+                Log.d("firebase", "ID value: " + latestItem.getId());
+                id_last_item = latestItem.getId();
                 TextView sknumberTextView = binding.sknumberNITextView;
                 sknumberTextView.append(String.valueOf(id_last_item));
             }
