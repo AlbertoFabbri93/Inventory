@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +13,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -63,7 +61,7 @@ public class NewItemFragment extends Fragment {
         String [] productCategoryArray = getContext().getResources().getStringArray(R.array.product_category_array);
         String [] materialCategoryArray = getContext().getResources().getStringArray(R.array.material_category_array);
         String [] functionalityArray = getContext().getResources().getStringArray(R.array.functionality_array);
-        String [] aestheticsArray = getContext().getResources().getStringArray(R.array.aesthetics_array);
+        String [] aestheticsArray = getContext().getResources().getStringArray(R.array.aesthetic_array);
 
         EditText editTextColor = binding.color;
         EditText editTextDimension = binding.editText1;
