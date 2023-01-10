@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/cohabit_light_blu"
-        android:entries="@array/aesthetics_array"
+        android:entries="@array/aesthetic_array"
         android:prompt="@string/aesthetic"
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="parent"

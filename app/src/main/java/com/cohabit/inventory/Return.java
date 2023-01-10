@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -17,7 +16,6 @@ import com.cohabit.inventory.databinding.FragmentReturnBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 
 public class Return extends Fragment {
 
@@ -30,7 +28,7 @@ public class Return extends Fragment {
 
         // Get string Array from strings.xml
         String [] functionalities = getContext().getResources().getStringArray(R.array.functionality_array);
-        String [] aesthetics = getContext().getResources().getStringArray(R.array.aesthetics_array);
+        String [] aesthetics = getContext().getResources().getStringArray(R.array.aesthetic_array);
         String [] location = getContext().getResources().getStringArray(R.array.location_array);
 
         // Binding spinners and editText.
@@ -74,7 +72,7 @@ public class Return extends Fragment {
                         for (DataSnapshot ds : task.getResult().getChildren()) {
                             Item itemToUpdate = ds.getValue(Item.class);
                             itemToUpdate.setFunctionality(binding.spinnerFunctionality.getSelectedItem().toString());
-                            itemToUpdate.setAesthetics(binding.spinnerAesthetics.getSelectedItem().toString());
+                            itemToUpdate.setAesthetic(binding.spinnerAesthetics.getSelectedItem().toString());
                             // itemToUpdate.setLocation(binding.spinnerLocation.getSelectedItem().toString());
                             itemsDatabase.child("items").child(ds.getKey()).setValue(itemToUpdate);
                             NavHostFragment.findNavController(Return.this).navigate(R.id.action_Return_to_Home);
