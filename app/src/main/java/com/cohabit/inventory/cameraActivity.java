@@ -1,10 +1,7 @@
 package com.cohabit.inventory;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -14,17 +11,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.SurfaceTexture;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.UUID;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -32,16 +28,11 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Header;
-import retrofit2.http.Multipart;
-import retrofit2.http.POST;
-import retrofit2.http.Part;
 
 public class cameraActivity extends AppCompatActivity {
     Button capture;
-
+    ImageView preview;
+    Button previewbtn;
     public void upload(String encoded){
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
@@ -61,13 +52,13 @@ public class cameraActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
         capture = findViewById(R.id.capturebtn);
-
+        preview = findViewById(R.id.preview);
+        previewbtn = findViewById(R.id.previewBTN);
         if (ContextCompat.checkSelfPermission(cameraActivity.this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(cameraActivity.this, new String[]{
@@ -82,6 +73,8 @@ public class cameraActivity extends AppCompatActivity {
                         //Bitmap part
                         Intent data = result.getData();
                         Bitmap captureImage=(Bitmap) data.getExtras().get("data");
+                        preview.setImageBitmap(captureImage);
+                        preview.setVisibility(View.INVISIBLE);
                         //Base-64 part
                         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                         captureImage.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
@@ -91,10 +84,13 @@ public class cameraActivity extends AppCompatActivity {
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
+
                                 upload(encoded);  //background stuff
+
                                 runOnUiThread(new Runnable() {
                                     public void run() {
                                         // do onPostExecute stuff
+
                                     }
                                 });
                             }
@@ -108,13 +104,18 @@ public class cameraActivity extends AppCompatActivity {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             //startActivityForResult(intent, 100);
             someActivityResultLauncher.launch(intent);
+
         });
 
+        previewbtn.setOnClickListener(v -> {
+            if (preview.getVisibility() == v.INVISIBLE) {
+                preview.setVisibility(v.VISIBLE);
+            } else {
+                preview.setVisibility(v.INVISIBLE);
+            }
 
+        });
     }
-
-
-
 }
 
 

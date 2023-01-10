@@ -35,10 +35,15 @@ public class HomeFragment extends Fragment {
             NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_Home_to_New_Item);
         });
 
-       binding.Returnbtn.setOnClickListener(viewReturn -> {
+       binding.returnButton.setOnClickListener(viewReturn -> {
            Log.i(TAG, "Return Item Button Clicked");
            NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_Home_to_Return);
        });
+
+        binding.listButton.setOnClickListener(viewReturn -> {
+            Log.i(TAG, "List Items Button Clicked");
+            NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_Home_to_List);
+        });
     }
 
     @Override
