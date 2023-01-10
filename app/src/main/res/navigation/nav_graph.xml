@@ -55,6 +55,9 @@
         <action
             android:id="@+id/action_Home_to_New_Item"
             app:destination="@id/New_Item" />
+        <action
+            android:id="@+id/action_Home_to_List"
+            app:destination="@id/List" />
     </fragment>
     <fragment
         android:id="@+id/Return"
@@ -63,6 +66,14 @@
         tools:layout="@layout/fragment_return" >
         <action
             android:id="@+id/action_Return_to_Home"
+            app:destination="@id/Home" />
+    </fragment>
+    <fragment
+        android:id="@+id/List"
+        android:name="com.cohabit.inventory.ListFragment"
+        android:label="Inventory Items" >
+        <action
+            android:id="@+id/action_List_to_Home"
             app:destination="@id/Home" />
     </fragment>
 </navigation>

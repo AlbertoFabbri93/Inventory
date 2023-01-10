@@ -26,7 +26,7 @@ public class NewItemFragment extends Fragment {
 
     private FragmentNewItemBinding binding;
     private DatabaseReference itemsDatabase;
-    private int id_last_item = 0;
+    private int id_new_item = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,11 +43,12 @@ public class NewItemFragment extends Fragment {
                 for (DataSnapshot ds : task.getResult().getChildren()) {
                     latestItem = ds.getValue(Item.class);
                 }
-                Log.d("firebase", String.valueOf(latestItem));
-                Log.d("firebase", "ID value: " + latestItem.id);
-                id_last_item = latestItem.id;
+                if(latestItem != null) {
+                    Log.d("firebase", "Highest ID: " + latestItem.getId());
+                    id_new_item = latestItem.getId() + 1;
+                }
                 TextView sknumberTextView = binding.sknumberNITextView;
-                sknumberTextView.append(String.valueOf(id_last_item));
+                sknumberTextView.append(String.valueOf(id_new_item));
             }
             else {
                 Log.e("firebase", "Error getting data", task.getException());
@@ -88,7 +89,7 @@ public class NewItemFragment extends Fragment {
             String aesthetics = spinnerAesthetics.getSelectedItem().toString();
             String color = editTextColor.getText().toString();
             String dimensions = editTextDimension.getText().toString();
-            Item item = new Item(productCategory, materialCategory, functionality, aesthetics, color, dimensions, id_last_item+1);
+            Item item = new Item(productCategory, materialCategory, functionality, aesthetics, color, dimensions, id_new_item);
             itemsDatabase.child("items").push().setValue(item);
             NavHostFragment.findNavController(NewItemFragment.this).navigate(R.id.action_New_Item_to_Home);
         });

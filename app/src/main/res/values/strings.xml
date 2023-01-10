@@ -4,6 +4,7 @@
     <string name="home">Home</string>
     <string name="new_item">New Item</string>
     <string name="return_item">Return</string>
+    <string name="list">List</string>
     <string name="log_in">Log In</string>
     <string name="log_out">Log Out</string>
     <string name="sign_up">Sign Up</string>
@@ -69,7 +70,5 @@
     <string-array name="location_array">
         <item>Malmö</item>
         <item>Lund</item>
-        <item>Earth</item>
-        <item>Moon</item>
     </string-array>
 </resources>
