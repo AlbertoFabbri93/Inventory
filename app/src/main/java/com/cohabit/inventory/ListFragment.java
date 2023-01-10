@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -51,6 +52,8 @@ public class ListFragment extends Fragment {
 
         // Add the following lines to create RecyclerView
         RecyclerView recyclerViewItems = rootView.findViewById(R.id.recyclerview_items);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerViewItems.getContext(), DividerItemDecoration.VERTICAL);
+        recyclerViewItems.addItemDecoration(dividerItemDecoration);
         recyclerViewItems.setLayoutManager(new LinearLayoutManager(getActivity()));
         FirebaseRecyclerOptions<Item> options = new FirebaseRecyclerOptions.Builder<Item>().setQuery(itemsQuery, Item.class).build();
         itemsAdapter = new ItemsAdapter(options);
