@@ -61,7 +61,7 @@
         <item>Painting</item>
         <item>Does not need repair</item>
         <item>Does not need painting</item>
-        <item>Does not need Cleaning</item>
+        <item>Does not need cleaning</item>
     </string-array>
 
     <string name="aesthetic_info"><b>Aesthetic:</b></string>
