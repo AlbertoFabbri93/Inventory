@@ -22,12 +22,20 @@ public class ItemsAdapter extends FirebaseRecyclerAdapter<Item, ItemsAdapter.Vie
         private final TextView textViewId;
         private final TextView textViewCategory;
         private final TextView textViewMaterial;
+        private final TextView textViewFunctionality;
+        private final TextView textViewAesthetic;
+        private final TextView textViewColor;
+        private final TextView textViewSize;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
            textViewId = itemView.findViewById(R.id.info_SKnumber);
            textViewCategory = itemView.findViewById(R.id.info_category);
            textViewMaterial = itemView.findViewById(R.id.info_material);
+           textViewFunctionality = itemView.findViewById(R.id.info_functionality);
+           textViewAesthetic = itemView.findViewById(R.id.info_aesthetic);
+           textViewColor = itemView.findViewById(R.id.info_color);
+           textViewSize = itemView.findViewById(R.id.info_size);
         }
 
         public TextView getView(){
@@ -55,5 +63,9 @@ public class ItemsAdapter extends FirebaseRecyclerAdapter<Item, ItemsAdapter.Vie
         Log.d("ItemsAdapter", "Category: " + model.getCategory());
         holder.textViewCategory.setText(model.getCategory());
         holder.textViewMaterial.setText(model.getMaterial());
+        holder.textViewFunctionality.setText(model.getFunctionality());
+        holder.textViewAesthetic.setText(model.getAesthetic());
+        holder.textViewColor.setText(model.getColor());
+        holder.textViewSize.setText(model.getSize());
     }
 }

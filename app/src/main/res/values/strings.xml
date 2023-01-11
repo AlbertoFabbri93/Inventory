@@ -25,6 +25,12 @@
     <string name="sk_number">SK number</string>
     <string name="submit">Submit</string>
 
+    <string name="color_info"><b>Color:</b></string>
+    <string name="size_info"><b>Size:</b></string>
+
+    <string name="location_info"><b>Location:</b></string>
+
+    <string name="category_info"><b>Category:</b></string>
     <string name="product_category">Product Category</string>
     <string-array name="product_category_array">
         <item>Chair</item>
@@ -37,18 +43,16 @@
         <item>Mirror</item>
     </string-array>
 
+    <string name="material_info"><b>Material:</b></string>
     <string name="material_category">Material Category</string>
     <string-array name="material_category_array">
         <item>Fabric</item>
         <item>Mix</item>
         <item>Non-Fabric</item>
         <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
     </string-array>
 
+    <string name="functionality_info"><b>Functionality:</b></string>
     <string name="functionality">Functionality</string>
     <string-array name="functionality_array">
         <item>Repair</item>
@@ -60,8 +64,9 @@
         <item>Does not need Cleaning</item>
     </string-array>
 
+    <string name="aesthetic_info"><b>Aesthetic:</b></string>
     <string name="aesthetic">Aesthetic</string>
-    <string-array name="aesthetics_array">
+    <string-array name="aesthetic_array">
         <item>Damaged</item>
         <item>Brand new</item>
         <item>Need to be checked more</item>

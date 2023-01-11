@@ -4,9 +4,9 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
 public class Item {
-    private String aesthetics;
+    private String aesthetic;
     private String color;
-    private String dimensions;
+    private String size;
     private String category;
     private String material;
     private String functionality;
@@ -28,20 +28,20 @@ public class Item {
         this.functionality = functionality;
     }
 
-    public String getAesthetics() {
-        return aesthetics;
+    public String getAesthetic() {
+        return aesthetic;
     }
 
-    public void setAesthetics(String aesthetics) {
-        this.aesthetics = aesthetics;
+    public void setAesthetic(String aesthetic) {
+        this.aesthetic = aesthetic;
     }
 
     public String getColor() {
         return color;
     }
 
-    public String getDimensions() {
-        return dimensions;
+    public String getSize() {
+        return size;
     }
 
     public int getId() {
@@ -52,13 +52,13 @@ public class Item {
         // Default constructor required for calls to DataSnapshot.getValue(Item.class)
     }
 
-    public Item(String product_category, String material_category, String functionality, String aesthetics, String color, String dimensions, int id) {
+    public Item(String product_category, String material_category, String functionality, String aesthetic, String color, String size, int id) {
         this.category = product_category;
         this.material = material_category;
         this.functionality = functionality;
-        this.aesthetics = aesthetics;
+        this.aesthetic = aesthetic;
         this.color = color;
-        this.dimensions = dimensions;
+        this.size = size;
         this.id = id;
     }
 }
