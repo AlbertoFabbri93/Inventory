@@ -33,6 +33,10 @@ import com.google.firebase.database.ValueEventListener;
 public class ListFragment extends Fragment implements MenuProvider {
 
     private ItemsAdapter itemsAdapter;
+    DatabaseReference itemsDatabase;
+    View rootView;
+    RecyclerView recyclerViewItems;
+    FirebaseRecyclerOptions<Item> options;
 
     @Nullable
     @Override
@@ -42,7 +46,7 @@ public class ListFragment extends Fragment implements MenuProvider {
         menuHost.addMenuProvider(this, getViewLifecycleOwner(), Lifecycle.State.RESUMED);
 
         // Database
-        DatabaseReference itemsDatabase = FirebaseDatabase.getInstance("https://cohabit-inventory-default-rtdb.europe-west1.firebasedatabase.app").getReference();
+        itemsDatabase = FirebaseDatabase.getInstance("https://cohabit-inventory-default-rtdb.europe-west1.firebasedatabase.app").getReference();
         Query itemsQuery = itemsDatabase.child("items");
 
         // Debug
@@ -60,14 +64,14 @@ public class ListFragment extends Fragment implements MenuProvider {
         });
 
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.items_list, container, false);
+        rootView = inflater.inflate(R.layout.items_list, container, false);
 
         // Add the following lines to create RecyclerView
-        RecyclerView recyclerViewItems = rootView.findViewById(R.id.recyclerview_items);
+        recyclerViewItems = rootView.findViewById(R.id.recyclerview_items);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerViewItems.getContext(), DividerItemDecoration.VERTICAL);
         recyclerViewItems.addItemDecoration(dividerItemDecoration);
         recyclerViewItems.setLayoutManager(new LinearLayoutManager(getActivity()));
-        FirebaseRecyclerOptions<Item> options = new FirebaseRecyclerOptions.Builder<Item>().setQuery(itemsQuery, Item.class).build();
+        options = new FirebaseRecyclerOptions.Builder<Item>().setQuery(itemsQuery, Item.class).build();
         itemsAdapter = new ItemsAdapter(options);
         recyclerViewItems.setAdapter(itemsAdapter);
 
@@ -100,7 +104,28 @@ public class ListFragment extends Fragment implements MenuProvider {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
                     Log.d("ListFragment", "Search submit query: " + query);
-                    return false;
+                    Query searchQuery = itemsDatabase.child("items").orderByChild("category").equalTo(query);
+                    searchQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            long count= dataSnapshot.getChildrenCount();
+                            Log.d("ListFragment", "Search results: " + count);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                    FirebaseRecyclerOptions<Item> search = new FirebaseRecyclerOptions.Builder<Item>().setQuery(searchQuery, Item.class).build();
+                    if (query != "") {
+                        itemsAdapter.updateOptions(search);
+                    }
+                    else {
+                        itemsAdapter.updateOptions(options);
+                    }
+                    itemsAdapter.notifyDataSetChanged();
+                    return true;
                 }
                 @Override
                 public boolean onQueryTextChange(String newText) {
@@ -109,6 +134,14 @@ public class ListFragment extends Fragment implements MenuProvider {
                 }
             });
         }
+        searchView.setOnCloseListener((SearchView.OnCloseListener) () -> {
+
+            Log.i("SearchView:", "onClose");
+            searchView.onActionViewCollapsed();
+            itemsAdapter.updateOptions(options);
+            itemsAdapter.notifyDataSetChanged();
+            return false;
+        });
     }
 
     @Override
