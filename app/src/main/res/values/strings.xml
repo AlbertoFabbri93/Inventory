@@ -29,6 +29,7 @@
     <string name="size_info"><b>Size:</b></string>
 
     <string name="location_info"><b>Location:</b></string>
+    <string name="search">Search</string>
 
     <string name="category_info"><b>Category:</b></string>
     <string name="product_category">Product Category</string>
