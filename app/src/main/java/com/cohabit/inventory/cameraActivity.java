@@ -43,7 +43,7 @@ public class cameraActivity extends AppCompatActivity {
         Request request = new Request.Builder()
                 .url("https://api.imgur.com/3/image")
                 .method("POST", body)
-                .addHeader("Authorization", "Bearer " + "26b146558b2a4a2e893dd57818d23b2b02167452")
+                .addHeader("Authorization", "Bearer " + "5dd4dde53704f5b6071034a59e4b8f84e041d1dc")
                 .build();
         try {
             Response response = client.newCall(request).execute();
